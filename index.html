@@ -1,142 +1,591 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Jack E. Mossberg</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jack E. Mossberg</title>
+  <style>
+    #body {
+        background-color: rgba(25, 25, 25, 1);
+        padding: 0px;
+        margin: 0px;
+        overflow-x: hidden;
+    }
+
+    #main-contents {
+        padding-top: 80px;
+    }
+
+    .text-element {
+        color: white;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    #navbar-container {
+        background-color: rgba(23, 42, 58, 1);
+        overflow: hidden;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        float: top;
+        top: 0;
+        left: 0;
+        z-index: 1000; 
+    }
+
+    @keyframes navbar-button-animation {
+        0% {
+            color: white;
+            background-color: rgba(23, 42, 58, 1);
+        }
+
+        100% {
+            color: rgb(184, 184, 184);
+            background-color: rgb(19, 34, 47);
+        }
+    }
+
+    #navbar-nav-list {
+        display: flex;
+        flex-direction: row;
+        margin-right: 5px;
+    }
+
+    .navbar-nav-list-element {
+        padding: 15px 20px;
+        text-decoration: none;
+        list-style-type: none;
+        font-size: 13px;
+        border-radius: 2px;
+        font-weight: 100;
+        font-size: 16px;
+        font-family: 'Courier New', Courier, monospace;
+        user-select: none;
+        font-weight: lighter;
+    }
+
+    .internal-link {
+        color: white;
+        text-decoration: none;
+    }
+
+    .navbar-nav-list-element:hover {
+        animation-name: navbar-button-animation;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-in;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+    }
+
+    .navbar-nav-list-element:hover::after {
+        animation-name: navbar-button-animation;
+        animation-duration: 0.1s;
+        animation-timing-function: ease-out;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-fill-mode: backwards;
+    }
+
+    #navbar-decor-img {
+        top: 1.7%;
+        left: 0;
+        margin-left: 20px;
+        width: 385px;
+    }
+
+    #About-Me-container {
+        background-color: rgba(23, 42, 58, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 1200px;
+        margin-top: 120px;
+        margin-right: 10px;
+        padding-left: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    #About-Me-bg-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        background-color: rgba(46, 46, 46, 1);
+        width: 100%;
+        padding-right: 0px;
+        padding-top: 10px;
+        padding-left: 0px;
+        padding-bottom: 10px;
+    }
+
+    #About-Me-image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #About-Me-quote-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+    }
+
+    #About-Me-left-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+    }
+
+    #About-Me-quote {
+        color: white;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+        margin-top: 20px;
+        padding: 10px;
+        text-decoration: underline;
+        border-radius: 12px;
+        user-select: none;
+    }
+
+    #About-Me-quote:hover {
+        animation-name: navbar-button-animation;
+        animation-duration: 0.2s;
+        animation-timing-function: ease-in;
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+    }
+
+    #About-Me-right-container {
+        display: flex;
+        flex-direction: row;
+        margin: 20px;
+        padding-left: 20px;
+    }
+
+    .Who-Am-I-text-container {
+        color: rgb(255, 255, 255);
+        font-size: 14px;
+        line-height: 1.2;
+        padding-right: 50px;
+        width: 350px;
+        text-align: left;
+    }
+
+    #About-Me-title {
+        font-size: 34px;
+        font-weight: 100;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: right;
+        padding-right: 30px;
+    }
+
+    #Projects-container {
+        background-color: rgba(23, 42, 58, 1);
+        float: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 1200px;
+        margin-top: 120px;
+        margin-right: 0px;
+        margin-bottom: 110px;
+        padding-left: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    #Projects-title {
+        font-size: 34px;
+        font-weight: 100;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: left;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    #projects-list-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 100%;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+    }
+
+    .project-element {
+        background-color: rgba(46, 46, 46, 1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px;
+        width: calc(33.33% - 20px);
+        box-sizing: border-box;
+    }
+
+    .project-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #Skills-container {
+        background-color: rgba(23, 42, 58, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 1200px;
+        margin: 120px 10px 0 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    #Skills-bg-container {
+        background-color: rgba(46, 46, 46, 1);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    #Skills-title {
+        font-size: 34px;
+        font-weight: 100;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: right;
+        padding-right: 20px;
+        width: 100%;
+    }
+
+    .skill-element {
+        background-color: rgb(44, 42, 42);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 10px;
+        margin: 10px;
+        width: calc(33.33% - 20px);
+        box-sizing: border-box;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 200px;
+    }
+
+    .skill-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        max-height: 150px;
+        object-fit: contain;
+    }
+
+    #python-image {
+        width: 98%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #css-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #html-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #javascript-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #django-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #java-image {
+        width: 97%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #spring-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #sql-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #cpp-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    #Resume-container {
+        background-color: rgba(23, 42, 58, 1);
+        float: right;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 1200px;
+        margin-top: 120px;
+        margin-right: 0px;
+        margin-bottom: 100px;
+        padding-left: 0px;
+        padding-top: 0px;
+        padding-bottom: feas0px;
+    }
+
+    #Resume-title {
+        font-size: 34px;
+        font-weight: 100;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        text-align: left;
+        padding-left: 20px;
+        width: 100%;
+    }
+
+    #Resume-pdf-container {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+    }
+
+    #footer-container {
+        background-color: rgba(23, 42, 58, 1);
+        width: 100vw;
+        padding: 10px;
+        text-align: center;
+        clear: both;
+    }
+
+    #copyright-text {
+        font-size: 14px;
+        font-weight: 100;
+        margin: 0;
+        padding: 10px;
+    }
+
+    #footer {
+        color: white;
+        font-weight: 100;
+        font-family: 'Courier New', Courier, monospace;
+        user-select: none;
+        margin-top: 100px;
+    }
+  </style>
 </head>
 <body id="body">
-    <section id="navbar" class="text-element">
-        <div id="navbar-container">
-            <div id="navbar-left-container">
-                <div id="navbar-left-contacts-container">
-                </div>
-                <div id="navbar-left-decor-container">
-                    <img src="images/74A68EDB-5125-481A-9192-609DFBD1EAC8.jpeg" alt="decor" id="navbar-decor-img">
-                </div>
-                <div id="navbar-left-link-list-container">
-                </div>
-            </div>
-            <div id="navbar-right-container">
-                <div id="navbar-right-nav-list-container">
-                    <ul id="navbar-nav-list">
-                        <li class="navbar-nav-list-element"><a class="internal-link" href="#About Me">Biography</a></li>
-                        <li class="navbar-nav-list-element"><a class="internal-link" href="#Projects">Projects</a></li>
-                        <li class="navbar-nav-list-element"><a class="internal-link" href="#Skills">Skills</a></li>
-                        <li class="navbar-nav-list-element"><a class="internal-link" href="#Resume">Resume</a></li>
-                    </ul>
-                </div>
-            </div>
+  <section id="navbar" class="text-element">
+    <div id="navbar-container">
+      <div id="navbar-left-container">
+        <div id="navbar-left-contacts-container"></div>
+        <div id="navbar-left-decor-container">
+          <img
+            src="images/header-decor.png"
+            alt="decor"
+            id="navbar-decor-img"
+          />
         </div>
-    </section>
-
-    <div id="main-contents">
-        <section id="About Me" class="text-element">
-            <div id="About-Me-container">
-                <h5 id="About-Me-title">Biography</h5>
-                <div id="About-Me-bg-container">
-                    <div id="About-Me-left-container">
-                        <div id="About-Me-image-container">
-                            <img src="images/IMG_20240701_155634_1.jpg" alt="Jack E. Mossberg" id="About-Me-image">
-                        </div>
-                        <div id="About-Me-quote-container">
-                            <h5 id="About-Me-quote">Wanna know more? Click here to see my resume!</h2>
-                        </div>
-                    </div>
-                    <div id="About-Me-right-container">
-                        <div class="Who-Am-I-text-container">
-                            <h1 id="About-Me-header">Who Am I?</h1>
-                            <p id="About-Me-text">Hello! My name is Jack E. Mossberg, and I am a software developer with a passion for creating innovative solutions to complex problems. I have experience in a variety of programming languages and frameworks, and I am always eager to learn new technologies and techniques. In addition to my technical skills, I am also a strong communicator and collaborator, and I enjoy working with others to achieve common goals. Whether I am working on a solo project or as part of a team, I am committed to delivering high-quality results that exceed expectations. Thank you for visiting my portfolio website, and please feel free to explore my projects and skills!</p>
-                        </div>
-                        <div class="Who-Am-I-text-container">
-                            <h1 id="About-Me-header">Whats Next?</h1>
-                            <p id="About-Me-text">I am currently seeking new opportunities to apply my skills and experience in a dynamic and challenging environment. I am open to both freelance and full-time positions, and I am particularly interested in roles that allow me to work on cutting-edge technologies and collaborate with talented teams. If you have a project or opportunity that you think would be a good fit for my skills and experience, please don't hesitate to reach out. I would love to hear from you!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="Projects" class="text-element">
-            <div id="Projects-container">
-                <h5 id="Projects-title">Projects</h5>
-                <div id="About-Me-bg-container">
-                    <div id="projects-list-container"> 
-                        <div class="project-element">
-                            <h1 class="project-title">Overdrive [Windows/Mac]</h1>
-                            <img src="images/project1.jpg" alt="Project 1" class="project-image">
-                            <p class="project-description">Description of Project 1</p>
-                        </div>
-                        <div class="project-element">
-                            <h1 class="project-title">Glib [Mac]</h1>
-                            <img src="images/project2.jpg" alt="Project 2" class="project-image">
-                            <p class="project-description">Description of Project 2</p>
-                        </div>
-                        <div class="project-element">
-                            <h1 class="project-title">Rubgld [Windows]</h1>
-                            <img src="images/project3.jpg" alt="Project 3" class="project-image">
-                            <p class="project-description">Description of Project 3</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="Skills" class="text-element">
-            <div id="Skills-container">
-                <h5 id="Skills-title">Skills</h5>
-                <div id="About-Me-bg-container">
-                    <div class="skill-element">
-                        <img src="images/skill1.png" alt="Skill 1" class="skill-image" id="python-image">
-                        <h4 class="skill-title">Python</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill2.png" alt="Skill 2" class="skill-image" id="css-image">
-                        <h4 class="skill-title">CSS</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill3.png" alt="Skill 3" class="skill-image" id="html-image">
-                        <h4 class="skill-title">HTML</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill4.png" alt="Skill 4" class="skill-image" id="javascript-image">
-                        <h4 class="skill-title">JavaScript</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill5.png" alt="Skill 5" class="skill-image" id="django-image">
-                        <h4 class="skill-title">Django</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill6.png" alt="Skill 6" class="skill-image" id="java-image">
-                        <h4 class="skill-title">Java</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill7.png" alt="Skill 7" class="skill-image" id="spring-image">
-                        <h4 class="skill-title">Spring</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill8.png" alt="Skill 8" class="skill-image" id="sql-image">
-                        <h4 class="skill-title">SQL</h4>
-                    </div>
-                    <div class="skill-element">
-                        <img src="images/skill9.png" alt="Skill 9" class="skill-image" id="cpp-image">
-                        <h4 class="skill-title">C/C++</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="Resume" class="text-element">
-            <div id="Resume-container">
-                <h5 id="Resume-title">Resume</h5>
-                <div id="About-Me-bg-container">
-                    <div id="Resume-pdf-container">
-                        <embed src="documents/Jack-E.-Mossberg-Resume.pdf" type="application/pdf" width="100%" height="1130px" />
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div id="navbar-left-link-list-container"></div>
+      </div>
+      <div id="navbar-right-container">
+        <ul id="navbar-nav-list">
+          <li class="navbar-nav-list-element">
+            <a class="internal-link" href="#About Me">Biography</a>
+          </li>
+          <li class="navbar-nav-list-element">
+            <a class="internal-link" href="#Projects">Projects</a>
+          </li>
+          <li class="navbar-nav-list-element">
+            <a class="internal-link" href="#Skills">Skills</a>
+          </li>
+          <li class="navbar-nav-list-element">
+            <a class="internal-link" href="#Resume">Resume</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </section>
 
-    <section id="Copyright" class="text-element">
+  <div id="main-contents">
+    <section id="About Me" class="text-element">
+      <div id="About-Me-container">
+        <h5 id="About-Me-title">Biography</h5>
+        <div id="About-Me-bg-container">
+          <div id="About-Me-left-container">
+            <div id="About-Me-image-container">
+              <img
+                src="images/IMG_20240701_155634_1.jpg"
+                alt="Jack E. Mossberg"
+                id="About-Me-image"
+              />
+            </div>
+            <div id="About-Me-quote-container">
+              <h5 id="About-Me-quote">
+                Wanna know more? Click here to see my resume!
+              </h5>
+            </div>
+          </div>
+          <div id="About-Me-right-container">
+            <div class="Who-Am-I-text-container">
+              <h1 id="About-Me-header">Who Am I?</h1>
+              <p id="About-Me-text">
+                Hello! My name is Jack E. Mossberg, and I am a software
+                developer with a passion for creating innovative solutions to
+                complex problems. I have experience in a variety of programming
+                languages and frameworks, and I am always eager to learn new
+                technologies and techniques. In addition to my technical skills,
+                I am also a strong communicator and collaborator, and I enjoy
+                working with others to achieve common goals. Whether I am
+                working on a solo project or as part of a team, I am committed
+                to delivering high-quality results that exceed expectations.
+                Thank you for visiting my portfolio website, and please feel
+                free to explore my projects and skills!
+              </p>
+            </div>
+            <div class="Who-Am-I-text-container">
+              <h1 id="About-Me-header">Whats Next?</h1>
+              <p id="About-Me-text">
+                I am currently seeking new opportunities to apply my skills and
+                experience in a dynamic and challenging environment. I am open
+                to both freelance and full-time positions, and I am
+                particularly interested in roles that allow me to work on
+                cutting-edge technologies and collaborate with talented teams.
+                If you have a project or opportunity that you think would be a
+                good fit for my skills and experience, please don't hesitate to
+                reach out. I would love to hear from you!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <section id="Projects" class="text-element">
+      <div id="Projects-container">
+        <h5 id="Projects-title">Projects</h5>
+        <div id="About-Me-bg-container">
+          <div id="projects-list-container">
+            <div class="project-element">
+              <h1 class="project-title">Overdrive [Windows/Mac]</h1>
+              <img src="images/project1.png" alt="Project 1" class="project-image" />
+              <p class="project-description">Overdrive is a cross-platform file management application designed to enhance productivity by providing users an intuitive interface for managing folders.</p>
+            </div>
+            <div class="project-element">
+              <h1 class="project-title">Glib [Mac]</h1>
+              <img src="images/project2.png" alt="Project 2" class="project-image" />
+              <p class="project-description">Glib is a lightweight C-based graphics library for creating stunning visualizations using the simple syntax of Python.</p>
+            </div>
+            <div class="project-element">
+              <h1 class="project-title">Rubgld [Windows]</h1>
+              <img src="images/project3.png" alt="Project 3" class="project-image" />
+              <p class="project-description">Rubgld is a graphics library for Windows that provides advanced graphics rendering features geared towards game developers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Skills" class="text-element">
+      <div id="Skills-container">
+        <h5 id="Skills-title">Skills</h5>
+        <div id="Skills-bg-container">
+          <div class="skill-element">
+            <img src="images/skill1.png" alt="Skill 1" class="skill-image" id="python-image" />
+            <h4 class="skill-title">Python</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill2.png" alt="Skill 2" class="skill-image" id="css-image" />
+            <h4 class="skill-title">CSS</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill3.png" alt="Skill 3" class="skill-image" id="html-image" />
+            <h4 class="skill-title">HTML</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill4.png" alt="Skill 4" class="skill-image" id="javascript-image" />
+            <h4 class="skill-title">JavaScript</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill5.png" alt="Skill 5" class="skill-image" id="django-image" />
+            <h4 class="skill-title">Django</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill6.png" alt="Skill 6" class="skill-image" id="java-image" />
+            <h4 class="skill-title">Java</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill7.png" alt="Skill 7" class="skill-image" id="spring-image" />
+            <h4 class="skill-title">Spring</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill8.png" alt="Skill 8" class="skill-image" id="sql-image" />
+            <h4 class="skill-title">SQL</h4>
+          </div>
+          <div class="skill-element">
+            <img src="images/skill9.png" alt="Skill 9" class="skill-image" id="cpp-image" />
+            <h4 class="skill-title">C/C++</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Resume" class="text-element">
+      <div id="Resume-container">
+        <h5 id="Resume-title">Resume</h5>
+        <div id="About-Me-bg-container">
+          <div id="Resume-pdf-container">
+            <embed
+              src="documents/Jack-E.-Mossberg-Resume.pdf"
+              type="application/pdf"
+              width="100%"
+              height="1130px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="text-element">
+      <div id="footer-container">
+        <p id="copyright-text">© 2025 Jack E. Mossberg. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>

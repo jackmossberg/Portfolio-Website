@@ -12,7 +12,7 @@
 .text-element {
     color: white;
     font-weight: 100;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 #navbar-container {
@@ -57,7 +57,7 @@
     border-radius: 2px;
     font-weight: 100;
     font-size: 16px;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     user-select: none;
     font-weight: lighter;
 }
@@ -143,12 +143,11 @@
 #About-Me-quote {
     color: white;
     font-weight: 100;
-    font-family:'Courier New', Courier, monospace;
+    font-family: 'Courier New', Courier, monospace;
     margin-top: 20px;
     padding: 10px;
     text-decoration: underline;
     border-radius: 12px;
-
     user-select: none;
 }
 
@@ -232,7 +231,7 @@
     box-sizing: border-box;
 }
 
-#project-image {
+.project-image {
     width: 100%;
     height: auto;
     border-radius: 4px;
@@ -243,10 +242,11 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 1200px;
     margin-top: 120px;
-    margin-right: 10px;
+    margin-right: auto;
+    margin-left: auto;
     padding: 0;
     box-sizing: border-box;
 }
@@ -265,14 +265,15 @@
     background-color: rgb(44, 42, 42);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 0px;
+    padding: 10px;
     margin: 10px;
-    width: calc((1200px - 60px) / 3);
+    width: calc(33.33% - 20px);
     box-sizing: border-box;
     text-align: center;
     display: flex;
-    justify-content: space-evenly;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .skill-image {
@@ -344,11 +345,11 @@
     width: 1200px;
     margin-top: 120px;
     margin-right: 0px;
+    margin-bottom: 100px;
     padding-left: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
-
 
 #Resume-title {
     font-size: 34px;
@@ -364,4 +365,27 @@
     width: 100%;
     height: 100%;
     border-radius: 8px;
+}
+
+#footer-container {
+    background-color: rgba(23, 42, 58, 1);
+    width: 100vw;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}
+
+#copyright-text {
+    font-size: 14px;
+    font-weight: 100;
+    margin: 0;
+    padding: 10px;
+}
+
+#footer {
+    color: white;
+    font-weight: 100;
+    font-family: 'Courier New', Courier, monospace;
+    user-select: none;
+    margin-top: 100px;
 }
